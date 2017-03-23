@@ -1,13 +1,15 @@
 /********************************************************************
+Name:Vafaee, Ashkan				
+UT EID:av28837		
+Section:16320	
+EE312-Assignment 3 
 
+main.c 
+Used to test Modes 1, 2, 3 of assignment-3.c
 ********************************************************************/
 #include <stdio.h>
 
 /********************************************************************
-        You need to write these functions.
-        Their declaretions are in "assignment-3.c file.
-        * IMPORTANT *
-        DO NOT CHANGE THE INTERFACE OF THESE FUNCTIONS!!!
 ********************************************************************/
 void isGaussianPrime(int a, int b, int print);
 void PrintGaussianPrime(int m);
@@ -33,7 +35,6 @@ int main(void) {
 
 /********************************************************************
         Main test function for operation mode #1 (isGaussianPrime).
-        You can create your own test cases by changing a and b values.
 ********************************************************************/
 void TestPart1(){
 		int print = 1;
@@ -73,7 +74,6 @@ void TestPart1(){
 
 /********************************************************************
         Main test function for operation mode #2 (PrintGaussianPrime).
-        You can create your own test cases by changing a and b values.
 ********************************************************************/
 void TestPart2(){
         int m;
@@ -89,7 +89,6 @@ void TestPart2(){
 
 /********************************************************************
         Main test function for operation mode #3 (PlotGaussianPrime).
-        You can create your own test cases by changing a and b values.
 ********************************************************************/
 void TestPart3(){
         int m;
