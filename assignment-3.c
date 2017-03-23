@@ -5,7 +5,7 @@
 	EE312-Assignment 3 
 	
 ********************************************************************/
-
+Checks whether a Gaussian integer is a Gaussian prime or not.
 /********************************************************************
 	isGaussianPrime:
 
@@ -23,7 +23,12 @@
 		Returns: This function should return 1 if the input is a Gaussian prime,
 				and 0 otherwise.
 				
-		To do: 	Explained briefly within the function
+		SAMPLE INPUT: -1 3
+			       1 4
+		SAMPLE OUTPUT:
+		-1 + 3i is not a Gaussian prime. Factorization = (1+2i)(1+i)
+		1 + 4i is a Gaussian prime.		
+				
 
 *********************************************************************/
 #include <stdio.h>
@@ -49,7 +54,7 @@ int isGaussianPrime(int a, int b, int print) {
 
 	if (b == 0) {				//imaginary part 0
 
-		flag = 1;				//check 4n+3
+		flag = 1;				
 
 		if (a < 0) {
 			A = a*-1;
@@ -66,9 +71,9 @@ int isGaussianPrime(int a, int b, int print) {
 		}
 	}
 
-	if (a == 0) {				//real part 0
+	if (a == 0) {					//real part 0
 
-		flag = 1;				//check 4n+3
+		flag = 1;				
 
 		if (b < 0) {
 			B = b*-1;
@@ -100,6 +105,7 @@ int isGaussianPrime(int a, int b, int print) {
 	max = (a*a) + (b*b);
 
 
+	// Brute force method to check if input is a Gaussian prime.
 	for (A=-1*max; A <= max; A++) {
 		for (B=-1*max; B <= max; B++) {
 			for (C=-1*max; C <= max; C++) {
@@ -121,43 +127,7 @@ int isGaussianPrime(int a, int b, int print) {
 	
 }
 
-	
-
-
-
-
-
-	//*****************************
-
-	/****************************************************************
-		TO DO:
-		
-		You will need to write nested loops to use brute force in 
-		order to find if the input is a Gaussian prime or not. If not,
-		you should print one of the factorization of the input (only if print=1).
-		To find that the input is not a Gaussian prime, you need to find 2 
-		complex number where multiplication of these two complex 
-		numbers should be equal to your input (check the definition 
-		described in lab document for more detail about Gaussian primes). 
-		That is, for input z where z = (a + bi)(c + di), you need to 
-		iterate over a, b, c, and d values to prove that z is not a 
-		Gaussian prime number.
-		
-		SAMPLE OUTPUT:
-		
-		-1 + 3i is not a Gaussian prime. Factorization = (1+2i)(1+i)
-
-		1 + 4i is a Gaussian prime.
-		
-		WARNING: 
-		
-		Your output should be exactly in the form described in the lab 
-		document. Otherwise, you may lose points. Print only one 
-		factorization of the input if it is not a Gaussian Prime.
-	****************************************************************/
-
-
-/********************************************************************
+/*********************************************************************
 	PrintGaussianPrime:
 
 		Inputs: 	(int m) where m is magnitude
@@ -167,8 +137,6 @@ int isGaussianPrime(int a, int b, int print) {
 				Write the primes to stdout.
 
 		Output: 	Check the lab document for output format
-
-		To do: 	Explained briefly within the function
 
 ********************************************************************/
 void PrintGaussianPrime(int m){
@@ -185,43 +153,13 @@ void PrintGaussianPrime(int m){
 				}
 			}
 		}
-		printf("\b\b}\n");
+ 		printf("\b\b}\n");
 	}
 
 	if (m <= 0) {
 		printf("{}\n");
 	}
 
-	/*****************************
-		Your code goes here
-	*****************************/
-	
-	/****************************************************************
-		TO DO:
-		
-		You should iterate over 0..M for both a value and b values 
-		where z = a + bi. For each a, b values, you need to check if 
-		it is a Gaussian prime or not. If so, you should print the 
-		result. For better performance, you can use 2D array. You 
-		can iterate over cell indexes, and put 1 if it is a Gaussian 
-		prime, 0 if it is not. Then, you can print your 2D array as 
-		described in lab document.
-		
-		SAMPLE OUTPUT:
-		
-		Primes with real and imaginary parts having magnitude less than 
-		or equal to 4 = {0 + 3i, 1 + 1i, 1 + 2i, 1 + 4i, 2 + 1i, 2 + 3i, 
-		3 + 0i, 3 + 2i, 4 + 1i}
-		
-		WARNING:
-		
-		Your output should be exactly in the form described in the lab 
-		document. Otherwise, you may lose points. Pay attention to the 
-		order of sequence and the commas! You should not put a comma at 
-		the end of the list. You will need to find a way to handle it. 
-		Printing Gaussian primes in the positive-positive quadrant is 
-		enough for correct result.
-	****************************************************************/
 }
 
 /********************************************************************
@@ -236,7 +174,6 @@ void PrintGaussianPrime(int m){
 
 		Output: 	Check the lab document for output format
 
-		To do: 	Explained briefly within the function
 
 ********************************************************************/
 void PlotGaussianPrime(int m){
@@ -246,7 +183,7 @@ void PlotGaussianPrime(int m){
 
 		for (int i = m; i >= 0; i--) {				//i=a
 			printf("%d ", i);
-			for (int j = 0; j <= m; j++) {			//i=b
+			for (int j = 0; j <= m; j++) {			//j=b
 				if (isGaussianPrime(i, j, 0)) {
 					printf("X");
 				}
@@ -265,20 +202,12 @@ void PlotGaussianPrime(int m){
 
 		printf("\n\n");
 	}
-
-
-	/*****************************
-		Your code goes here
-	*****************************/
 	
 	/****************************************************************
-		TO DO:
 		
-		You should do the same thing as you do for Mode 2. However, 
-		this time you will plot your result as described in previous 
-		section. If it is  a Gaussian prime, you should print X, 
-		otherwise 0 (zero). Your output should be exactly in the 
-		form described in lab document.
+	isPrime:
+	
+		Prints the result of PlotGaussianPrime in an M x M grid
 		
 		SAMPLE OUTPUT:
 		
@@ -290,13 +219,9 @@ void PlotGaussianPrime(int m){
 		0 000X0
 		  01234
 		  
-		WARNING:
 		
 		For z = a + bi, y-axis represents b values, and x-axis represents 
-		a values. Your output should be exactly in the form described 
-		in the lab document. Otherwise, you may lose points. Plotting 
-		Gaussian primes in the positive-positive quadrant is enough for 
-		correct result.
+		a values.
 	****************************************************************/
 }
 
